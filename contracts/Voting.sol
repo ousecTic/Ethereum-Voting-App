@@ -14,7 +14,7 @@ contract Voting {
 
     function compareStrings(string memory a, string memory b)
         public
-        view
+        pure
         returns (bool)
     {
         return (keccak256(abi.encodePacked((a))) ==
