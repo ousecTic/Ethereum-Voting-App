@@ -25,7 +25,15 @@ async function main() {
   const Voting = await hre.ethers.getContractFactory("Voting");
   const voting = await Voting.deploy();
 
+  //voting delegate
+
+  const DelegateVoting = await hre.ethers.getContractFactory("DelegateVoting");
+  const delegateVoting = await DelegateVoting.deploy();
+
+  await delegateVoting.deployed();
   await voting.deployed();
+
+  console.log(delegateVoting.address);
   console.log(voting.address);
 }
 

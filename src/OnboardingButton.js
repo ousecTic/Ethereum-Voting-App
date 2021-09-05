@@ -5,7 +5,7 @@ const ONBOARD_TEXT = 'Click here to install MetaMask!';
 const CONNECT_TEXT = 'Connect';
 const CONNECTED_TEXT = 'Connected';
 
-export function OnboardingButton({setAccount}) {
+export function OnBoardingButton({setAccount}) {
   const [buttonText, setButtonText] = React.useState(ONBOARD_TEXT);
   const [isDisabled, setDisabled] = React.useState(false);
   const [accounts, setAccounts] = React.useState([]);
@@ -57,10 +57,11 @@ export function OnboardingButton({setAccount}) {
     }
   };
   return (
-    <button disabled={isDisabled} onClick={onClick}>
+    <div className="text-center"><button disabled={isDisabled} onClick={onClick} className="btn btn-primary">
       {buttonText}
-    </button>
+    </button></div>
+    
   );
 }
 
-export default OnboardingButton;
+export default OnBoardingButton;
