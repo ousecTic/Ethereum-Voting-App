@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import OnBoardingButton from "../OnboardingButton";
 import DelegateVoting from "../artifacts/contracts/DelegateVoting.sol/DelegateVoting.json";
 
-const delegateVotingAddress = "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+const delegateVotingAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
 
 const VotingTable = () => {
 
@@ -15,21 +15,30 @@ const VotingTable = () => {
 
   let [trumpScore, setTrumpScore] = useState(0);
 
-   async function fetchScore() {
+   async function listenForScore() {
     if (typeof window.ethereum !== 'undefined') {
       const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' })
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const contract = new ethers.Contract(delegateVotingAddress, DelegateVoting.abi, provider);
-      const score = await contract.showScore();
-      console.log("Score: ", score);
-      setBidenScore(score[0]);
-      setTrumpScore(score[1])
+
+      contract.on("VoteCast", async (joeBidenScore, donaldTrumpScore) => {
+        //parseInt(hexString, 16)
+        // setBidenScore(parseInt(joeBidenScore._hex, 16));
+        // setTrumpScore(parseInt(donaldTrumpScore._hex, 16));
+
+        setBidenScore(joeBidenScore.toNumber())
+        setTrumpScore(donaldTrumpScore.toNumber())
+      })
+      // const score = await contract.showScore();
+      // console.log("Score: ", score);
+      // setBidenScore(score[0]);
+      // setTrumpScore(score[1])
     }
   }
 
   useEffect(() => {
-    fetchScore();
-  })
+    listenForScore();
+  },[])
 
   async function vote(color) {
     try {
@@ -41,15 +50,16 @@ const VotingTable = () => {
       const transaction = await contract.castVote(color)
         await transaction.wait()
         
-        if (color === "joe-biden") {
-          setBidenScore(bidenScore + 1);
-        } else {
-          setTrumpScore(trumpScore + 1);
-        }
+        // if (color === "joe-biden") {
+        //   setBidenScore(bidenScore + 1);
+        // } else {
+        //   setTrumpScore(trumpScore + 1);
+        // }
         
     }
     } catch (error) {
       console.log(error)
+      alert(error.data.message)
     }
   }
 
