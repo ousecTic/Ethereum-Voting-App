@@ -17,7 +17,7 @@ const VotingTable = () => {
 
    async function listenForScore() {
     if (typeof window.ethereum !== 'undefined') {
-      const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' })
+      await window.ethereum.request({ method: 'eth_requestAccounts' })
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const contract = new ethers.Contract(delegateVotingAddress, DelegateVoting.abi, provider);
 
@@ -40,22 +40,15 @@ const VotingTable = () => {
     listenForScore();
   },[])
 
-  async function vote(color) {
+  async function vote(delegate) {
     try {
       if (typeof window.ethereum !== 'undefined') {
-      const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' })
+      await window.ethereum.request({ method: 'eth_requestAccounts' })
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner()
       const contract = new ethers.Contract(delegateVotingAddress, DelegateVoting.abi, signer)
-      const transaction = await contract.castVote(color)
+      const transaction = await contract.castVote(delegate)
         await transaction.wait()
-        
-        // if (color === "joe-biden") {
-        //   setBidenScore(bidenScore + 1);
-        // } else {
-        //   setTrumpScore(trumpScore + 1);
-        // }
-        
     }
     } catch (error) {
       console.log(error)

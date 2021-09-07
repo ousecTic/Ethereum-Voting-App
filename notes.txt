@@ -1,0 +1,23 @@
+-Why does the address constantly changes compare to the other code file
+
+- what is method eth_requestAccounts
+
+- What is a provider or contract in ether.js
+
+- what is a signer in provider
+
+- what do certain function require a signer
+
+- how does metamask login work? 
+
+- what is the toNumber() method? 
+
+- what is the purpose of a task in hardhat? 
+
+- what is hre for ethers.js
+
+- what is an artifacts 
+
+- how does network work in hardhats 
+
+- What is chainId
