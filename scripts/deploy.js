@@ -22,23 +22,17 @@ async function main() {
   //   console.log("Greeter deployed to:", greeter.address);
   // }
 
-  const Voting = await hre.ethers.getContractFactory("Voting");
-  const voting = await Voting.deploy();
-
   //voting delegate
 
   const DelegateVoting = await hre.ethers.getContractFactory("DelegateVoting");
   const delegateVoting = await DelegateVoting.deploy();
 
   await delegateVoting.deployed();
-  await voting.deployed();
 
   console.log(delegateVoting.address);
-  console.log(voting.address);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
+
 main()
   .then(() => process.exit(0))
   .catch((error) => {
