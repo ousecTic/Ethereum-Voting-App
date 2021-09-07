@@ -21,3 +21,5 @@
 - how does network work in hardhats 
 
 - What is chainId
+
+- does it matter what uint I use? 
