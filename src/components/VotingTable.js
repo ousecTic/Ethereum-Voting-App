@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import OnBoardingButton from "./OnboardingButton";
 import DelegateVoting from "../artifacts/contracts/DelegateVoting.sol/DelegateVoting.json";
 
-const delegateVotingAddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+const delegateVotingAddress = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9" //add your smart contract address
 
 const VotingTable = () => {
 

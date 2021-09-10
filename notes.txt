@@ -23,3 +23,15 @@
 - What is chainId
 
 - does it matter what uint I use? 
+
+========================
+
+HOW TO SPLIT UP! 
+
+1. List all the solidity components to learn (also how solidity plays a part in this app)
+
+2. List all the ethers.js components to learn (how ethers plays a part in this app)
+
+3. Talk about how metamask works and how it plays a part in this app
+
+4. Talk about how React communicates with the smart contract with ethers.js

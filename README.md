@@ -1,15 +1,19 @@
-# Basic Sample Hardhat Project
+# Ethereum Voting Application
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This is a voting app using React.js, Ether.js, and hardhat!
 
-Try running some of the following tasks:
+## Setup
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+Install Dependencies in the top-level directory with `npm install`. 
+
+Compile the contracts using `npx hardhat compile`. Path configuration can be found in the `hardhat.config.js` file. 
+
+## Voting on a local Blockchain
+
+Spin up a localhost blockchain with `npx hardhat node`. After that, run `npx hardhat run scripts/deploy.js --network localhost` to deploy the voting dapp on this local blockchain.This will create the smart contract address which you can add to the `delegateVotingAddress` variable located in `src/components/VotingTable.js`
+
+## Front-end
+
+To run the front-end application run `npm start` from the top-level directory. 
+
+
